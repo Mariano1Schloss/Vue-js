@@ -1,12 +1,11 @@
 <template>
-<div>
-  <nav @click="myFunction">
-    <router-link class="nav-link active" aria-current="page" to="/windows">Windows</router-link>
-    <router-link class="navbar-brand" to="/rooms">Rooms</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <nav @click="myFunction">
+      <router-link class="nav-link active" aria-current="page" to="/windows">Windows</router-link >
+      <router-link class="navbar-brand" to="/rooms">Rooms</router-link>
+    </nav>
+    <router-view />
   </div>
-
 </template>
 
 <script>

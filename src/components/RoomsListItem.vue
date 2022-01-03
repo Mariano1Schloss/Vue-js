@@ -1,85 +1,47 @@
 <template>
-  <div class="room border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
+  <div
+    class="room border border-secondary rounded p-2 mb-2"
+    :class="{ expanded: isExpanded }"
+  >
     <div class="top-row d-flex" @click="toggleExpand">
-      <div class="room-name fw-bold pe-3">{{room.name}}</div>
-      <div class="room-name text-muted">{{room.roomName}}</div>
-
-      <!-- <div class="open-status ms-4" :class="{open: isroomOpen, closed: !isroomOpen}">
-        <template v-if="isroomOpen">
-          <span class="icon">&#x2B24;</span> Open
-        </template>
-        <template v-else>
-          <span class="icon">&#x2716;</span> Closed
-        </template>
-      </div> -->
+      <div class="room-name fw-bold pe-3">{{ room.name }}</div>
+      <div class="room-floor text-muted">Floor : {{ room.floor }}</div>
 
       <div class="expand-button ms-auto">
-        {{ isExpanded ? '&#9660;' : '&#9658;' }}
+        {{ isExpanded ? "&#9660;" : "&#9658;" }}
       </div>
     </div>
-    <!-- <template v-if="isExpanded">
-      <hr/>
+    <template v-if="isExpanded">
+      <hr />
       <div class="details d-flex">
-        <button type="button" class="btn btn-secondary me-2" @click="switchroom">{{ isroomOpen ? 'Close' : 'Open' }} room</button>
-        <button type="button" class="btn btn-danger disabled">Delete room</button>
+        <div class="room-target fw-bold pe-3">
+          Current Temperature : {{ room.current_temperature }}°C
+        </div>
+        <div class="room-temperature text-muted">
+          Target Temperature : {{ room.target_temperature }}°C
+        </div>
       </div>
-    </template> -->
+    </template>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import {API_HOST} from '../config';
+import axios from "axios";
+import { API_HOST } from "../config";
 
 export default {
-  name: 'RoomsListItem',
-  props: ['room'],
+  name: "RoomsListItem",
+  props: ["room"],
   data: function() {
     return {
-      isExpanded: false
-    }
-  }, 
-  /* computed: {
-    isroomOpen: function() {
-      return this.room.roomStatus === 'OPEN'; 
-    }
-  }, */
+      isExpanded: false,
+    };
+  },
+
   methods: {
     toggleExpand() {
       this.isExpanded = !this.isExpanded;
     },
-    /* async switchroom() {
-      let response = await axios.put(`${API_HOST}/api/rooms/${this.room.id}/switch`);
-      let updatedroom = response.data;
-      this.$emit('room-updated', updatedroom);
-    } */
-  }
-}
+  },
+};
 </script>
-
-<style lang="scss" scoped>
-
-/* .open-status {
-  .icon {
-    position: relative;
-  }
-
-  &.open {
-    color: #198754;
-    .icon {
-      font-size: 12px;
-      top: -3px;
-    }
-  }
-
-  &.closed {
-    color: #dc3545;
-  }
-} */
-
-.room {
-  .top-row {
-    cursor: pointer;
-  }
-}
-</style>

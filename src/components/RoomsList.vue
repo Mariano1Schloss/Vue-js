@@ -1,31 +1,30 @@
 <template>
   <div class="rooms-list pt-3">
-    <rooms-list-item 
+    <rooms-list-item
       v-for="room in rooms"
       :room="room"
-      :key="room.id"  
+      :key="room.id"
       @room-updated="updateroom"
     >
     </rooms-list-item>
   </div>
 </template>
 
-
 <script>
-import axios from 'axios';
-import {API_HOST} from '../config';
-import RoomsListItem from './RoomsListItem';
+import axios from "axios";
+import { API_HOST } from "../config";
+import RoomsListItem from "./RoomsListItem";
 
 export default {
   components: {
-    RoomsListItem
+    RoomsListItem,
   },
-  name: 'RoomsList',
+  name: "RoomsList",
   data: function() {
     return {
       /* Initialize rooms with an empty array, while waiting for actual data to be retrieved from the API */
-      rooms: []
-    }
+      rooms: [],
+    };
   },
   created: async function() {
     let response = await axios.get(`${API_HOST}/api/rooms`);
@@ -35,9 +34,9 @@ export default {
   methods: {
     updateroom(newroom) {
       /* Find the place of room objectw ith the same Id in the array, and replace it */
-      let index = this.rooms.findIndex(room => room.id === newroom.id);
+      let index = this.rooms.findIndex((room) => room.id === newroom.id);
       this.rooms.splice(index, 1, newroom);
-    }
-  }
-}
+    },
+  },
+};
 </script>

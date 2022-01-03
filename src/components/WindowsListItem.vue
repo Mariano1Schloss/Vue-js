@@ -22,7 +22,6 @@
     </div>
     <template v-if="isExpanded">
       <hr />
-      <!-- <div class="window-id text-muted">id : {{window.id}}</div> -->
       <div class="details d-flex">
         <button
           type="button"
@@ -31,8 +30,17 @@
         >
           {{ isWindowOpen ? "Close" : "Open" }} window
         </button>
-        <button id="deleteButton" type="button" class="btn btn-danger " @click="deleteWindow">
-          <router-link style="text-decoration:none ; color:white" to="/deleteWindow">Delete window</router-link>
+        <button
+          id="deleteButton"
+          type="button"
+          class="btn btn-danger "
+          @click="deleteWindow"
+        >
+          <router-link
+            style="text-decoration:none ; color:white"
+            to="/deleteWindow"
+            >Delete window</router-link
+          >
         </button>
       </div>
     </template>
@@ -71,10 +79,9 @@ export default {
       const element = document.querySelector("#deleteButton");
       axios
         .delete(`${API_HOST}/api/windows/${this.window.id}`)
-        // .then(() => (element.innerHTML = "Delete successful"));
-        .then ((response)=>{
-                console.log(response.data);
-            })
+        .then((response) => {
+          console.log(response.data);
+        });
     },
   },
 };
@@ -98,7 +105,6 @@ export default {
     color: #dc3545;
   }
 }
-
 
 .window {
   .top-row {

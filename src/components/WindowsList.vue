@@ -10,13 +10,9 @@
       </windows-list-item>
     </div>
     <div class="button">
-      <!-- <a
-        href="https://github.com/kode-kelvin/Flask-VueJS-CRUD-APP"
-        target="_blank"
-        rel="noopener"
-        >Add window
-      </a> -->
-      <a><router-link target="_blank" rel="noopener" to="/createWindow">Add window</router-link></a>
+      <a>
+        <router-link target="_blank" rel="noopener" to="/createWindow">Add window</router-link>
+      </a>
     </div>
   </div>
 </template>
@@ -31,20 +27,18 @@ export default {
     WindowsListItem,
   },
   name: "WindowsList",
-  data: function() {
+  data: function () {
     return {
-      /* Initialize windows with an empty array, while waiting for actual data to be retrieved from the API */
       windows: [],
     };
   },
-  created: async function() {
+  created: async function () {
     let response = await axios.get(`${API_HOST}/api/windows`);
     let windows = response.data;
     this.windows = windows;
   },
   methods: {
     updateWindow(newWindow) {
-      /* Find the place of window objectw ith the same Id in the array, and replace it */
       let index = this.windows.findIndex(
         (window) => window.id === newWindow.id
       );
@@ -53,6 +47,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .section .button {
   margin-top: 30px;
