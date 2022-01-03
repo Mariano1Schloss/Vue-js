@@ -1,4 +1,5 @@
-# solution
+# Project
+This project is an introduction to Vue.JS. It provides front-end side to a java application previously developped (Faircorp) that aims to manage rooms and windows from a building
 
 ## Project setup
 ```
@@ -10,15 +11,3 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
